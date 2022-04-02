@@ -79,9 +79,19 @@ class HomeState extends State<Home> {
               itemList[index].name,
               style: textStyle,
             ),
-            subtitle: Text(this.itemList[index].price.toString()),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Rp." + itemList[index].price.toString()),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text("Stok Barang : " + itemList[index].stok),
+                Text("Kode Barang : " + itemList[index].kode),
+              ],
+            ),
             trailing: GestureDetector(
-              child: Icon(Icons.delete),
+              child: const Icon(Icons.delete),
               onTap: () async {
                 //TODO 3 Panggil Fungsi untuk Delete dari DB berdasarkan Item
                 deleteItem(itemList[index]);
